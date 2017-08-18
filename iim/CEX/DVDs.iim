@@ -1,0 +1,19 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+SET !DATASOURCE DVDs.csv
+SET !EXTRACT_TEST_POPUP NO
+SET !LOOP 1
+
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:/search/index.php ATTR=NAME:stext CONTENT={{!COL1}}<SP>{{!COL2}}
+TAG POS=2 TYPE=INPUT:SUBMIT FORM=ACTION:/search/index.php ATTR=*
+
+SET !EXTRACT {{!COL1}}<SP>{{!COL2}}
+TAG POS=1 TYPE=DIV ATTR=TXT:WeBuy<SP>for<SP>cash* EXTRACT=TXT
+SET !VAR1 EVAL("var ret = \"{{!EXTRACT}}\"; var rets = ret.replace(\"WeBuy for cash  \",\"\"); rets;")
+SET !EXTRACT NULL
+SET !EXTRACT {{!VAR1}}
+TAG POS=1 TYPE=DIV ATTR=TXT:WeBuy<SP>for<SP>voucher* EXTRACT=TXT
+SET !VAR2 EVAL("var ret = \"{{!EXTRACT}}\"; var rets = ret.replace(\"WeBuy for voucher \",\"\"); rets;")
+SET !EXTRACT NULL
+SET !EXTRACT {{!VAR2}}
+
+SAVEAS TYPE=EXTRACT FOLDER=* FILE=DVD<SP>Prices.csv

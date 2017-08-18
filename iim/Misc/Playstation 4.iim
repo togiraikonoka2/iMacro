@@ -1,0 +1,6 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB T=1
+URL GOTO=http://www.ebay.co.uk/
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:http://www.ebay.co.uk/sch/i.html ATTR=NAME:_nkw CONTENT=playstation<SP>4
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:http://www.ebay.co.uk/sch/i.html ATTR=*
+TAG POS=1 TYPE=A ATTR=TXT:Lowest<SP>price<SP>+<SP>P&P

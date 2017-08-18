@@ -1,0 +1,22 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+SET !DATASOURCE Wii.csv
+SET !EXTRACT_TEST_POPUP NO
+
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:/search/index.php ATTR=NAME:stext CONTENT={{!COL1}}<SP>{{!COL2}}
+TAG POS=2 TYPE=INPUT:SUBMIT FORM=ACTION:/search/index.php ATTR=*
+
+SET !EXTRACT {{!COL1}}
+TAG POS=1 TYPE=DIV ATTR=TXT:WeBuy<SP>for<SP>cash<SP>£* EXTRACT=TXT
+SET !VAR1 {{!EXTRACT}}
+SET !VAR2 EVAL("var ret = \"{{!VAR1}}\"; var rets = ret.replace('WeBuy for cash ',''); rets;")
+SET !EXTRACT {{!VAR2}}
+
+SET !VAR1 NULL
+SET !VAR2 NULL
+
+TAG POS=1 TYPE=DIV ATTR=TXT:WeBuy<SP>for<SP>voucher<SP>£* EXTRACT=TXT
+SET !VAR1 {{!EXTRACT}}
+SET !VAR2 EVAL("var ret = \"{{!VAR1}}\"; var rets = ret.replace('WeBuy for voucher',''); rets;")
+SET !EXTRACT {{!VAR2}}
+
+SAVEAS TYPE=EXTRACT FOLDER=* FILE=Wii<SP>Prices.csv

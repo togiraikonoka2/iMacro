@@ -1,0 +1,4 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB T=1
+SET !TIMEOUT_STEP 1
+URL GOTO=http://www.neopets.com/island/tradingpost.phtml?type=browse&criteria=owner&search_string=da_best_51

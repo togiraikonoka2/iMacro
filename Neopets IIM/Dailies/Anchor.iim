@@ -1,0 +1,5 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB T=1
+URL GOTO=http://www.neopets.com/pirates/anchormanagement.phtml
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=DIV ATTR=CLASS:text-image&&TXT:

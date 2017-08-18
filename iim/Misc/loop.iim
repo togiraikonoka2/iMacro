@@ -1,0 +1,11 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+
+SET !EXTRACT_TEST_POPUP NO
+SET !LOOP 1
+
+TAB T=1
+'URL GOTO=http://www.notsoboringlife.com/list-of-hobbies/
+
+TAG POS={{!LOOP}} TYPE=LI ATTR=class:loh_column*&&TXT:* EXTRACT=TXT
+
+SAVEAS TYPE=EXTRACT FOLDER=* FILE=hobbies.csv

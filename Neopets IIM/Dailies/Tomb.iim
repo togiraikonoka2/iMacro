@@ -1,0 +1,8 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB OPEN 
+TAB T=2
+URL GOTO=http://www.neopets.com/worlds/geraptiku/tomb.phtml
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:/worlds/geraptiku/tomb.phtml ATTR=*
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:/worlds/geraptiku/process_tomb.phtml ATTR=*

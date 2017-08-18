@@ -1,0 +1,12 @@
+﻿VERSION BUILD=844 RECORDER=CR
+SET !EXTRACT_TEST_POPUP NO
+TAB OPEN
+TAB T=2
+URL GOTO=http://www.neopets.com/market.phtml?type=till
+TAG POS=1 TYPE=B ATTR=TXT:*<SP>NP EXTRACT=TXT
+SET !VAR1 {{!EXTRACT}}
+SET !VAR2 EVAL("var np = \"{{!VAR1}}\"; var nps = np.replace(',','').replace(' ','').replace('NP',''); nps;")
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:process_market.phtml ATTR=NAME:amount CONTENT={{!VAR2}}
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:process_market.phtml ATTR=*

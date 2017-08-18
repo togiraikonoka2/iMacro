@@ -1,0 +1,9 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB OPEN
+TAB T=2
+TAB CLOSEALLOTHERS
+URL GOTO=http://www.neopets.com/shenkuu/lunar/?show=puzzle
+
+TAB OPEN
+TAB T=2
+URL GOTO=http://www.jellyneo.net/?go=lunartemple#calculation

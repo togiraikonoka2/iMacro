@@ -1,0 +1,8 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB T=1
+SET !EXTRACT_TEST_POPUP NO
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=A ATTR=ID:npanchor EXTRACT=TXT
+SET !VAR1 EVAL("var np = \"{{!Extract}}\";var nps = np.replace(',', ''); npa = nps - 1200; if(npa < 0) {npa = 0} else if (npa >= 0){npa}")
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:/island/process_tradingpost.phtml ATTR=NAME:neopoints CONTENT={{!VAR1}}

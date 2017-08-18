@@ -1,0 +1,35 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+SET !LOOP {{ret}}
+
+SET !EXTRACT_TEST_POPUP NO
+
+TAB T=1
+
+SET !DATASOURCE shop.csv
+
+TAG POS={{!COL4}} TYPE=TD ATTR=TXT:* EXTRACT=TXT
+
+TAB OPEN
+TAB T=2
+URL GOTO=http://www.neopets.com/market.phtml?type=wizard
+
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:market.phtml ATTR=NAME:shopwizard CONTENT={{!EXTRACT}}
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=SELECT FORM=ACTION:market.phtml ATTR=NAME:criteria CONTENT=%exact
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:market.phtml ATTR=*
+
+SET !VAR2 {{!EXTRACT}}
+SET !VAR1 {{percent}}
+TAG POS=1 TYPE=B ATTR=TXT:*<SP>NP EXTRACT=TXT
+SET !VAR3 EVAL("var ret = \"{{!EXTRACT}}\"; var ret2 = \"{{!VAR1}}\"; var ret3 = ret2/100; var rets = ret.replace(',','').replace('{{!VAR2}}','').replace('[EXTRACT]','').replace(' NP',''); var np = Math.ceil(rets*ret3); np;")
+
+TAB CLOSE
+
+TAB T=1
+
+TAG POS={{!COL4}} TYPE=TD ATTR=TXT:* EXTRACT=TXT
+SET !EXTRACT {{!VAR1}}
+SET !TIMEOUT_STEP 1
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:process_market.phtml ATTR=NAME:cost_{{!LOOP}} CONTENT={{!VAR3}}

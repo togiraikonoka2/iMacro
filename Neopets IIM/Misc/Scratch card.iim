@@ -1,0 +1,15 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB T=1
+TAG POS=1 TYPE=SELECT FORM=ACTION:kiosk2.phtml ATTR=NAME:card_id CONTENT=%8903
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:kiosk2.phtml ATTR=*
+TAG POS=9 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif
+WAIT SECONDS=5
+TAG POS=7 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif
+WAIT SECONDS=5
+TAG POS=6 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif
+WAIT SECONDS=5
+TAG POS=5 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif
+WAIT SECONDS=5
+TAG POS=2 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif
+WAIT SECONDS=5
+TAG POS=1 TYPE=IMG ATTR=SRC:http://images.neopets.com/winter/scratchcard/not_scratched.gif

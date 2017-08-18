@@ -1,0 +1,27 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+SET !EXTRACT_TEST_POPUP NO
+
+TAB T=1
+URL GOTO=http://www.neopets.com/market.phtml?type=wizard
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:market.phtml ATTR=NAME:shopwizard CONTENT=Silver<SP>Job<SP>Coupon
+TAG POS=1 TYPE=SELECT FORM=ACTION:market.phtml ATTR=NAME:criteria CONTENT=%exact
+TAG POS=1 TYPE=INPUT:TEXT FORM=ACTION:market.phtml ATTR=NAME:max_price CONTENT=61250
+TAG POS=1 TYPE=INPUT:SUBMIT FORM=ACTION:market.phtml ATTR=*
+
+TAG POS=36 TYPE=B ATTR=TXT:* EXTRACT=TXT
+SET !VAR1 {{!Extract}}
+SET !VAR2 EVAL("var np = \"{{!VAR1}}\"; var nps = np.replace(',', '').replace(' ', '').replace('NP', ''); nps")
+
+TAB OPEN 
+TAB T=2
+URL GOTO=http://www.neopets.com/bank.phtml
+TAG POS=2 TYPE=INPUT:TEXT FORM=ACTION:process_bank.phtml ATTR=NAME:amount CONTENT={{!VAR2}}
+ONDIALOG POS=1 BUTTON=OK CONTENT=
+TAG POS=2 TYPE=INPUT:SUBMIT FORM=ACTION:process_bank.phtml ATTR=*
+TAB CLOSE
+
+TAB T=1
+TAG POS=35 TYPE=B ATTR=TXT:* 
+ONDIALOG POS=1 BUTTON=OK CONTENT=
+TAG POS=1 TYPE=IMG ATTR=SRC:http://images.neopets.com/items/silver_ticket.gif
+WAIT SECONDS=5

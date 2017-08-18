@@ -1,0 +1,10 @@
+﻿VERSION BUILD=9030808 RECORDER=FX
+TAB OPEN
+TAB T=2
+URL GOTO=http://www.neopets.com/faerieland/wheel.phtml
+WAIT SECONDS=5
+
+TAB OPEN
+TAB T=3
+URL GOTO=http://www.neopets.com/prehistoric/mediocrity.phtml
+WAIT SECONDS=5
